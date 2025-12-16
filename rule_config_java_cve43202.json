@@ -1,0 +1,30 @@
+[
+  {
+    "checkerIds": ["taint_flow_java_input"],
+    "sources": {
+      "TaintSource": [
+        {
+          "path": "yamlConfigFile",
+          "className": "*",
+          "scopeFile": "/HttpTaskDefinitionParser.java",
+          "scopeFunc": "parse",
+          "attribute": "CVE-2024-43202-PathTraversal"
+        }
+      ]
+    },
+    "sinks": {
+      "FuncCallTaintSink": [
+        {
+          "args": ["0"],
+          "attribute": "CVE-2024-43202-PathTraversal",
+          "calleeType": "org.apache.dolphinscheduler.plugin.task.api.loop.template.http.parser.HttpTaskDefinitionParser",
+          "fsig": "parseYamlConfigFile",
+          "scopeFile": "/HttpTaskDefinitionParser.java",
+          "scopeFunc": "parse"
+        }
+      ]
+    },
+    "sanitizers": [],
+    "entrypoints": []
+  }
+]
